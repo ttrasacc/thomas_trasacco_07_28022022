@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+	provider = "prisma-client-js"
+}
+
+datasource db {
+	provider = "mysql"
+	url      = env("DATABASE_URL")
+}
+
+model user {
+	id							String		@id @default(uuid()) @db.VarChar(50)
+	username					String		@unique @db.VarChar(100)
+	email						String		@unique @db.VarChar(50)
+	hashed_password				String		@db.VarChar(200)
+	permissions					Int			@default(0)
+	
+	article						article[]
+	answer						answer[]
+}
+
+model article {
+	id							String		@id @default(uuid()) @db.VarChar(50)
+	creationDate				DateTime	@db.DateTime(0)
+	title						String		@db.VarChar(150)
+	body						String		@db.MediumText
+	id_author					String		@db.VarChar(50)
+	id_category					String?		@db.VarChar(50)
+	
+	user						user    	@relation(fields: [id_author], references: [id])
+	category					category?	@relation(fields: [id_category], references: [id])
+	answer						answer[]
+}
+
+model category {
+	id							String		@id @default(uuid()) @db.VarChar(50)
+	label						String		@unique @db.VarChar(50)
+	icon						String		@db.MediumText
+
+	article						article[]
+}
+
+model answer {
+	id							String		@id @default(uuid()) @db.VarChar(50)
+	id_author					String		@db.VarChar(50)
+	creationDate				DateTime	@db.DateTime(0)
+	toAnswer					String?		@db.VarChar(50)
+	toArticle					String?		@db.VarChar(50)
+	body						String		@db.MediumText
+	
+	user						user    	@relation(fields: [id_author], references: [id])
+	answers 					answer[]  	@relation("AnswerToAnswer")
+	answerToAnswer    			answer?   	@relation("AnswerToAnswer", fields: [toAnswer], references: [id])
+	answerToArticle				article?	@relation(fields: [toArticle], references: [id])
+}

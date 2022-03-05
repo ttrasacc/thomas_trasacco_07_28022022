@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+	  "target": "es2016",
+	  "lib": ["es2019"],
+	  "module": "commonjs",
+	  "outDir": "./dist",
+	  "strict": false,
+	  "esModuleInterop": true,
+	  "inlineSourceMap": true
+	},
+	"ts-node": {
+	  "files": true
+	}
+}
+  
