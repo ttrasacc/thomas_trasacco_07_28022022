@@ -1,0 +1,31 @@
+<div class="login-form-container">
+  <div class="login-form">
+    <div class="register-button">
+      <a *ngIf="!registerMode" class="link" (click)="onSwitchMode()">S'inscrire</a>
+      <a *ngIf="registerMode" class="link" (click)="onSwitchMode()">Se connecter</a>
+    </div>
+    <h2 *ngIf="!registerMode">Se connecter</h2>
+    <h2 *ngIf="registerMode">S'inscrire</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Adresse email : </label>
+        <input type="text"
+               id="email"
+               class="form-control"
+               formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe : </label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               formControlName="password">
+      </div>
+      <button class="btn btn-primary"
+              type="submit"
+              [disabled]="loginForm.invalid"><span *ngIf="!registerMode">Me connecter</span><span *ngIf="registerMode">M'inscrire</span></button>
+    </form>
+    <p class="text-danger">{{ errorMessage }}</p>
+
+  </div>
+</div>

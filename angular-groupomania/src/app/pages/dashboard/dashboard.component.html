@@ -1,0 +1,27 @@
+<div class="main-container">
+  <header class="article-creation">
+    <form [formGroup]="newPostFormGroup" (ngSubmit)="onSubmitNewPost(newPostFormGroup.value)" class="form">
+      <h1>Créer un nouveau post</h1>
+      <input type="text" formControlName="title" class="inline-block" placeholder="Titre" #articleTitle>
+      <textarea formControlName="body" placeholder="Ecrivez le contenu que vous souhaitez publier ici..." class="inline-block text-input" #articleBody></textarea>
+      <div class="button-create">
+        <button type="submit" class="create" [disabled]="!newPostFormGroup.valid" (click)="articleBody.value=''; articleTitle.value=''">Créer</button>
+      </div>
+    </form>
+  </header>
+  <section class="articles-view" (scroll)="onScroll($event)" >
+    <article *ngFor="let article of displayedArticles" class="article">
+      <div class="title">
+        <h2>{{article.author.username}} - {{article.title}}</h2>
+        <p>{{formatDate(article.creationDate)}}</p>
+      </div>
+      <div class="body">
+        <h3>{{article.body}}</h3>
+      </div>
+      <div class="reactions">
+        <button type="button" (click)="onViewComments(article.id)" class="view-comments-button"><mat-icon>message</mat-icon>{{article.commentsCount}}</button>
+        <app-comment [idArticle]="expandedArticle" *ngIf="expandedArticle == article.id"></app-comment>
+      </div>
+    </article>
+  </section>
+</div>

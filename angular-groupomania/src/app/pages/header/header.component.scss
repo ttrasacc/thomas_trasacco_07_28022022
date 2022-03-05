@@ -1,0 +1,24 @@
+.logo {
+  margin-left: 24px;
+}
+
+.user-infos {
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-logo {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .small-logo {
+    display: block;
+  }
+  .big-logo {
+    display: none;
+  }
+}

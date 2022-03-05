@@ -1,0 +1,19 @@
+<div class="comments-view"  *ngIf="displayedComments.length > 0">
+  <div class="comment" *ngFor="let comment of displayedComments">
+    <div class="title">
+      <h3>{{comment.author.username}} - {{formatDate(comment.creationDate)}}</h3>
+    </div>
+    <div class="body">
+      <p>{{comment.body}}</p>
+    </div>
+    <app-comment *ngIf="comment.relatedComments > 0"></app-comment>
+  </div>
+</div>
+<div class="add-comment" *ngIf="isLoaded">
+  <form [formGroup]="newCommentFormGroup" (ngSubmit)="onSubmitNewComment(newCommentFormGroup.value)" class="form">
+    <textarea formControlName="comment" placeholder="Ecrivez votre commentaire..." class="inline-block text-input" #commentInput></textarea>
+    <div class="button-create">
+      <button type="submit" class="create" [disabled]="!newCommentFormGroup.valid" (click)="commentInput.value=''">Créer</button>
+    </div>
+  </form>
+</div>
