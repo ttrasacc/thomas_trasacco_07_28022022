@@ -1,6 +1,6 @@
 # thomas_trasacco_07_28022022
 
-## Installation
+# Installation
   ## Pre-requisite:
     - Node and npm (node package manager) version LTS or 17.4.0
         Click here to see how to install it : https://nodejs.org/en/download/current/
