@@ -46,7 +46,7 @@ userController.post('/login', async (req: express.Request, res: express.Response
 		};
 		const accessToken = jwt.sign(jwtModel, env.ACCESS_TOKEN_SECRET, { expiresIn: '60d' });
 		let { hashed_password, ...userWithoutPassword } = user;
-		res.json({ accessToken,  userWithoutPassword });
+		res.json({ accessToken,  ...userWithoutPassword });
 
 	} catch (error) {
 		console.error(error);
