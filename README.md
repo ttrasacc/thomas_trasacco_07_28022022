@@ -16,7 +16,7 @@
   ## MySQL
   - Import the script at the root of the project using the following command :
     ```mysql -u username -p dbname < Dump20220305.sql```
-    Replace username and dbname depending of your installation and your willings, note that you could need to change the DATABASE_URL variable in the .env :
+    Replace username and dbname depending of your installation and your willings, note that you could need to change the DATABASE_URL variable in back/.env :
     *DATABASE_URL="mysql://$USER:$PASSWORD@localhost:3306/$DATABASE_NAME"
   ## Back
   - Install Prisma/client 3 using npm : (globally using ```-g``` as above)
