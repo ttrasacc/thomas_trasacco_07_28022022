@@ -1,7 +1,7 @@
 <div class="main-container">
   <header class="article-creation">
     <form [formGroup]="newPostFormGroup" (ngSubmit)="onSubmitNewPost(newPostFormGroup.value)" class="form">
-      <h1>Créer un nouveau post</h1>
+      <h1>Nouveau post</h1>
       <input type="text" formControlName="title" class="inline-block" placeholder="Titre" #articleTitle>
       <textarea formControlName="body" placeholder="Ecrivez le contenu que vous souhaitez publier ici..." class="inline-block text-input" #articleBody></textarea>
       <div class="button-create">

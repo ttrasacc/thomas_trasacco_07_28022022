@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #556F7A;
+  background: var(--grey);
   height: 100%;
+  color: white;
 }
 
 .register-button {
@@ -21,7 +22,7 @@
   margin: 50px;
   border-radius: 20px;
   box-shadow: 0 0 10px 0 #d3d3d3;
-  background: #2E6171;
+  background: var(--blue);
 
   form {
     display: flex;
@@ -51,6 +52,6 @@
   font-weight: bold;
   &:hover {
     cursor: pointer;
-    color: grey;
+    color: var(--marine);
   }
 }

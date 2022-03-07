@@ -1,3 +1,8 @@
+a {
+  text-decoration: none;
+  color: var(--marine);
+}
+
 .logo {
   margin-left: 24px;
 }
@@ -8,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .small-logo {
